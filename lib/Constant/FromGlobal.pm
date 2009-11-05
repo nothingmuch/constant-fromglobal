@@ -8,15 +8,23 @@ use Data::OptList;
 
 use constant ();
 
+our $VERSION = "0.01";
+
 sub import {
     my ( $class, @args ) = @_;
 
     my $opt = ref($args[0]) eq 'HASH' ? shift @args : {};
 
-    my $package = caller;
+    @_ = (
+		"constant",
+		$class->process_constants(
+			package => scalar(caller),
+			%$opt,
+			constants => \@args
+		)
+	);
 
-    @_ = ( constant => $class->process_constants( package => caller(), %$opt, constants => \@args ) );
-    goto constant->can("import");
+    goto &constant::import;
 }
 
 sub process_constants {
@@ -50,6 +58,10 @@ sub get_value {
         $value = $class->get_env_var(%args);
     }
 
+	if ( not defined $value and defined $args{default} ) {
+		$value = $args{default};
+	}
+
     if ( $args{bool} ) {
         return not not $value;
     } elsif ( defined $value ) {
@@ -61,9 +73,9 @@ sub get_value {
             croak "'$value' does not look like an integer" unless $value =~ /^\s* -? \d+ \s*$/x;
             return int 0+$value;
         }
-    } else {
-		return $args{default}; # probably undef
 	}
+
+	return $value;
 }
 
 sub var_name {
