@@ -4,7 +4,7 @@ Revision history for perl module Constant::FromGlobal
     - Constants in main:: namespace don't need MAIN_ prefix on
       environment variables. Suggested by Burak Gürsoy
     - Added this Changes file.
-
+    - Documentation improvements
 
 0.01 2009-11-05
     - first release

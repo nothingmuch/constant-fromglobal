@@ -111,22 +111,23 @@ __END__
 
 =head1 NAME
 
-Constant::FromGlobal - Adam Kennedy's "Constant Global" pattern
+Constant::FromGlobal - declare constant(s) with value from global or environment variable
 
 =head1 SYNOPSIS
 
-    package Foo;
-    
-    use Constant::FromGlobal qw(DEBUG);
-
-    sub foo {
-        # to enable debug, set $Foo::DEBUG=1 before loading Foo
-        warn "lalala" if DEBUG:
-    }
+  package Foo;
+  
+  use Constant::FromGlobal qw(DEBUG);
+   
+  sub foo {
+      # to enable debug, set $Foo::DEBUG=1 before loading Foo
+      warn "lalala" if DEBUG:
+  }
 
 =head1 DESCRIPTION
 
-This module lets you easily define constants whose value is initialized from a
+This module implements Adam Kennedy's "Constant Global" pattern:
+it lets you easily define constants whose value is initialized from a
 global or an environment variable.
 
 =head1 METHODS
@@ -140,21 +141,50 @@ an option list (see L<Data::OptList>) of constant names.
 
 For example:
 
-	use Constant::FromGlobal { env => 1 }, "DSN", MAX_FOO => { int => 1, default => 3 };
+  use Constant::FromGlobal { env => 1 }, "DSN", MAX_FOO => { int => 1, default => 3 };
 
 is the same as
 
-	use Constant::FromGlobal DSN => { env => 1 }, MAX_FOO => { int => 1, default => 3, env => 1 };
+  use Constant::FromGlobal DSN => { env => 1 }, MAX_FOO => { int => 1, default => 3, env => 1 };
 
 which will define two constants, C<DSN> and C<MAX_FOO>. C<DSN> is a string and
 C<MAX_FOO> is an integer. Both will take their values from C<$Foo::DSN> if
 defined or C<$ENV{FOO_DSN}> as a fallback.
 
-Note: if you define constants in the B<main> namespace, the first release of this module
+Note: if you define constants in the B<main> namespace, version 0.01 of this module
 looked for environment variables prefixed with C<MAIN_>. From version 0.02 onwards,
 you don't need the C<MAIN_> prefix.
 
+=back
+
 =head1 SEE ALSO
 
-L<constant>, L<constant::def>, L<http://use.perl.org/~Alias/journal/39845>
+=over 4
+
+=item L<constant>
+
+Core module for defining constants, and used by Constant::FromGlobal.
+
+=item L<constant::lexical>
+
+Very similar to the C<constant> pragma, but defines lexically-scoped constants.
+
+=item L<Const::Fast>
+
+CPAN module for defining immutable variables (scalars, hashes, and arrays).
+
+=item Adam Kenndey's original post
+
+Adam's original post that inspired this module was on use.perl.org,
+and is not longer available online.
+
+=item L<constant modules|http://neilb.org/reviews/constants.html>
+
+A review of all perl modules for defining constants, by Neil Bowers.
+
+=back
+
+=head1 AUTHOR
+
+Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
 
