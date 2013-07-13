@@ -8,7 +8,7 @@ use Data::OptList;
 
 use constant ();
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 sub import {
     my ( $class, @args ) = @_;
@@ -95,6 +95,7 @@ sub get_env_var {
     my ( $class, %args ) = @_;
 
     my $name = uc $class->var_name(%args);
+    $name =~ s/^MAIN:://;
     $name =~ s/::/_/g;
 
     $ENV{$name};
@@ -149,6 +150,11 @@ which will define two constants, C<DSN> and C<MAX_FOO>. C<DSN> is a string and
 C<MAX_FOO> is an integer. Both will take their values from C<$Foo::DSN> if
 defined or C<$ENV{FOO_DSN}> as a fallback.
 
+Note: if you define constants in the B<main> namespace, the first release of this module
+looked for environment variables prefixed with C<MAIN_>. From version 0.02 onwards,
+you don't need the C<MAIN_> prefix.
+
 =head1 SEE ALSO
 
 L<constant>, L<constant::def>, L<http://use.perl.org/~Alias/journal/39845>
+
