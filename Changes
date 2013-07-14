@@ -1,10 +1,16 @@
 Revision history for perl module Constant::FromGlobal
 
-0.02 2013-07-13
+0.03 2013-07-14
+    - Added information about license and repository to Makefile.PL,
+      so it will appear in metadata.
+    - License and repository now mentioned in the pod as well.
+
+0.02 2013-07-14
+    - Neil Bowers taken over as maintainer
     - Constants in main:: namespace don't need MAIN_ prefix on
       environment variables. Suggested by Burak Gürsoy
     - Added this Changes file.
     - Documentation improvements
 
 0.01 2009-11-05
-    - first release
+    - first release from Yuval Kogman

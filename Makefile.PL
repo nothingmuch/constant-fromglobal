@@ -14,4 +14,10 @@ WriteMakefile(
 		'Data::OptList' => 0,
 		'constant' => 0,
 	},
+    META_MERGE => {
+        resources => {
+            repository => 'https://github.com/neilbowers/constant-fromglobal',
+        },
+    },
+    LICENSE      => 'perl',
 );

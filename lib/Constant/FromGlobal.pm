@@ -8,7 +8,7 @@ use Data::OptList;
 
 use constant ();
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 sub import {
     my ( $class, @args ) = @_;
@@ -184,7 +184,16 @@ A review of all perl modules for defining constants, by Neil Bowers.
 
 =back
 
+=head1 REPOSITORY
+
+L<https://github.com/neilbowers/constant-fromglobal>
+
 =head1 AUTHOR
 
-Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
+This module was originally written by Yuval Kogman,
+but is now being maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>.
+
+=head1 LICENSE
+
+This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 
