@@ -1,5 +1,8 @@
 Revision history for perl module Constant::FromGlobal
 
+0.04 2014-01-05
+    - Added Carp, constant and warnings as explicit prereqs in Makefile.PL
+
 0.03 2013-07-14
     - Added information about license and repository to Makefile.PL,
       so it will appear in metadata.

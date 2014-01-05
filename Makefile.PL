@@ -12,7 +12,10 @@ WriteMakefile(
 	PREREQ_PM    => {
 		'Test::More' => 0.88,
 		'Data::OptList' => 0,
-		'constant' => 0,
+		'constant'      => 0,
+        'Carp'          => 0,
+        'constant'      => 0,
+        'warnings'      => 0,
 	},
     META_MERGE => {
         resources => {
