@@ -4,6 +4,12 @@ use ExtUtils::MakeMaker;
 
 require 5.006;
 
+my $mm_ver = $ExtUtils::MakeMaker::VERSION;
+if ($mm_ver =~ /_/) { # dev version
+    $mm_ver = eval $mm_ver;
+    die $@ if $@;
+}
+
 WriteMakefile(
 	NAME         => 'Constant::FromGlobal',
 	VERSION_FROM => 'lib/Constant/FromGlobal.pm',
@@ -23,4 +29,10 @@ WriteMakefile(
         },
     },
     LICENSE      => 'perl',
+
+    ($mm_ver >= 6.48
+        ? (MIN_PERL_VERSION => 5.008)
+        : ()
+    ),
+
 );
