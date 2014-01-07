@@ -1,15 +1,12 @@
 package Constant::FromGlobal;
+# ABSTRACT: declare constant(s) with value from global or environment variable
 
 use strict;
 use warnings;
 use 5.8.0;
-
 use Carp;
 use Data::OptList;
-
 use constant ();
-
-our $VERSION = "0.04";
 
 sub import {
     my ( $class, @args ) = @_;

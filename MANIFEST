@@ -1,5 +1,0 @@
-Changes
-MANIFEST
-Makefile.PL
-lib/Constant/FromGlobal.pm
-t/01_basic.t
