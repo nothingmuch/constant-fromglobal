@@ -30,21 +30,21 @@ sub process_constants {
 
     my $options = Data::OptList::mkopt(delete $args{constants}, "constant", 1, [qw(HASH ARRAY)]);
 
-    my %constants;
+    my $constants;
 
     my $caller = $args{package};
 
     foreach my $constant ( @$options ) {
         my ( $name, $opt ) = @$constant;
 
-        $constants{$name} = $class->get_value(
+        $constants->{$name} = $class->get_value(
             %args,
             name => $name,
             %$opt,
         );
     }
 
-    return %constants;
+    return $constants;
 }
 
 sub get_value {
