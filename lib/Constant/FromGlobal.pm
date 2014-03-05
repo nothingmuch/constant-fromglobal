@@ -30,7 +30,7 @@ sub process_constants {
 
     my $options = Data::OptList::mkopt(delete $args{constants}, "constant", 1, [qw(HASH ARRAY)]);
 
-    my $constants;
+    my $constants = {};
 
     my $caller = $args{package};
 
