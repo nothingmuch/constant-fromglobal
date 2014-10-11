@@ -1,5 +1,9 @@
 Revision history for perl module Constant::FromGlobal
 
+0.06 2014-10-11
+    - You couldn't declare multiple constants in the way shown in the doc.
+      Thanks to Алексей Суриков (KSURI) for the pull request.
+
 0.05 2014-01-07
     - Switched to Dist::Zilla
 
