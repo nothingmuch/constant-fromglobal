@@ -114,9 +114,9 @@ Constant::FromGlobal - declare constant(s) with value from global or environment
 =head1 SYNOPSIS
 
   package Foo;
-  
+
   use Constant::FromGlobal qw(DEBUG);
-   
+
   sub foo {
       # to enable debug, set $Foo::DEBUG=1 before loading Foo
       warn "lalala" if DEBUG:
@@ -124,15 +124,49 @@ Constant::FromGlobal - declare constant(s) with value from global or environment
 
 =head1 DESCRIPTION
 
-This module implements Adam Kennedy's "Constant Global" pattern:
-it lets you easily define constants whose value is initialized from a
-global or an environment variable.
+This module lets you define constants that either take their values from
+global variables, or from environment variables. The constants are
+function-style constants, like those created using the L<constant> pragma.
+
+Here's a minimal example showing how to set a constant from a global
+variable:
+
+ our $DEBUG;
+ BEGIN {
+     $DEBUG = 1;
+ }
+ use Constant::FromGlobal qw/ DEBUG /;
+
+You might wonder why you might want to do that?
+A better example is where a module sets a constant from a global
+variable in its package, but you can set that variable before
+using the module.
+First, here's the module:
+
+ package Foobar;
+ use Constant::FromGlobal LOGLEVEL => { default => 0 };
+
+Then elsewhere you can write something like this:
+
+ BEGIN {
+   $Foobar::LOGLEVEL = 3;
+ }
+ use Foobar;
+
+=head2 Environment variables
+
+By default C<Constant::FromGlobal> will only look at the relevant
+global variable. If you pass the B<env> option, then it will also
+look for an appropriately named environment variable:
+
+ use Constant::FromGlobal DEBUG => { env => 1, default => 0 };
+
+Note that you can also set a default value, which will be used
+if neither a global variable nor environment variable was found.
 
 =head1 METHODS
 
-=over 4
-
-=item import
+=head2 import
 
 This routine takes an optional hash of options for all constants, followed by
 an option list (see L<Data::OptList>) of constant names.
@@ -152,6 +186,19 @@ defined or C<$ENV{FOO_DSN}> as a fallback.
 Note: if you define constants in the B<main> namespace, version 0.01 of this module
 looked for environment variables prefixed with C<MAIN_>. From version 0.02 onwards,
 you don't need the C<MAIN_> prefix.
+
+There are three types you can specify for constants:
+
+=over 4
+
+=item * B<int> - constains the constant to take an integer value.
+Will croak if a non-integer value is found.
+
+=item * B<num> - constains the constant to take a numeric value.
+Will croak if a non-numeric value is found.
+
+=item * B<bool> - coerces the constant to take a boolean value.
+Whatever value is found will be converted to a boolean value.
 
 =back
 
@@ -189,7 +236,10 @@ L<https://github.com/neilbowers/Constant-FromGlobal>
 =head1 AUTHOR
 
 This module was originally written by Yuval Kogman,
-but is now being maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>.
+inspired by a blog post by Adam Kennedy,
+describing the "Constant Global" pattern.
+
+The module is now being maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>.
 
 =head1 LICENSE
 
