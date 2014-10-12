@@ -1,5 +1,9 @@
 Revision history for perl module Constant::FromGlobal
 
+0.07 2014-10-12
+    - Renamed github repo to match CPAN dist name (my personal convention),
+      so update reference to repo in doc.
+
 0.06 2014-10-11
     - You couldn't declare multiple constants in the way shown in the doc.
       Thanks to Алексей Суриков (KSURI) for the pull request.

@@ -184,7 +184,7 @@ A review of all perl modules for defining constants, by Neil Bowers.
 
 =head1 REPOSITORY
 
-L<https://github.com/neilbowers/constant-fromglobal>
+L<https://github.com/neilbowers/Constant-FromGlobal>
 
 =head1 AUTHOR
 
