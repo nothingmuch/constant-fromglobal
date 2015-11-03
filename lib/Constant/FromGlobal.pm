@@ -1,4 +1,5 @@
 package Constant::FromGlobal;
+
 # ABSTRACT: declare constant(s) with value from global or environment variable
 
 use strict;
@@ -231,7 +232,7 @@ A review of all perl modules for defining constants, by Neil Bowers.
 
 =head1 REPOSITORY
 
-L<https://github.com/neilbowers/Constant-FromGlobal>
+L<https://github.com/neilb/Constant-FromGlobal>
 
 =head1 AUTHOR
 

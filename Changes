@@ -1,5 +1,8 @@
 Revision history for perl module Constant::FromGlobal
 
+0.08 2015-11-03 NEILB
+    - Updated github repo URL after changing my github username
+
 0.07 2014-10-12
     - Added new testsuites that cover all the types of constraints / coercions
     - Extended the documentation with more intro material, and descriptions of
