@@ -205,30 +205,21 @@ Whatever value is found will be converted to a boolean value.
 
 =head1 SEE ALSO
 
-=over 4
+L<constant> -
+core module for defining constants, and used by Constant::FromGlobal.
 
-=item L<constant>
+L<constant::lexical> -
+very similar to the C<constant> pragma, but defines lexically-scoped constants.
 
-Core module for defining constants, and used by Constant::FromGlobal.
-
-=item L<constant::lexical>
-
-Very similar to the C<constant> pragma, but defines lexically-scoped constants.
-
-=item L<Const::Fast>
-
+L<Const::Fast> -
 CPAN module for defining immutable variables (scalars, hashes, and arrays).
-
-=item Adam Kenndey's original post
 
 Adam's original post that inspired this module was on use.perl.org,
 and is no longer available online.
 
-=item L<constant modules|http://neilb.org/reviews/constants.html>
-
+L<constant modules|http://neilb.org/reviews/constants.html> -
 A review of all perl modules for defining constants, by Neil Bowers.
 
-=back
 
 =head1 REPOSITORY
 
