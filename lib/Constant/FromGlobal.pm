@@ -222,7 +222,7 @@ CPAN module for defining immutable variables (scalars, hashes, and arrays).
 =item Adam Kenndey's original post
 
 Adam's original post that inspired this module was on use.perl.org,
-and is not longer available online.
+and is no longer available online.
 
 =item L<constant modules|http://neilb.org/reviews/constants.html>
 
