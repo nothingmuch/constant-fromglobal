@@ -206,7 +206,7 @@ Whatever value is found will be converted to a boolean value.
 =head1 SEE ALSO
 
 L<constant> -
-core module for defining constants, and used by Constant::FromGlobal.
+core module for defining constants, and used by C<Constant::FromGlobal>.
 
 L<constant::lexical> -
 very similar to the C<constant> pragma, but defines lexically-scoped constants.
@@ -214,8 +214,8 @@ very similar to the C<constant> pragma, but defines lexically-scoped constants.
 L<Const::Fast> -
 CPAN module for defining immutable variables (scalars, hashes, and arrays).
 
-Adam's original post that inspired this module was on use.perl.org,
-and is no longer available online.
+L<Adam Kennedy's original post|http://use.perl.org/use.perl.org/_Alias/journal/39845.html>
+that inspired this module.
 
 L<constant modules|http://neilb.org/reviews/constants.html> -
 A review of all perl modules for defining constants, by Neil Bowers.

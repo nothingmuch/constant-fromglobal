@@ -1,5 +1,10 @@
 Revision history for perl module Constant::FromGlobal
 
+0.09 2016-08-08 NEILB
+    - Added a link to Adam Kennedy's original blog post on use.perl.org,
+      which inspired this module. Thanks to BOOK, who showed me that
+      the original URL can be mapped to something which works.
+
 0.08 2015-11-03 NEILB
     - Updated github repo URL after changing my github username
     - Added [MetaJSON] to dist.ini, so releases will include a META.json
