@@ -1,5 +1,8 @@
 Revision history for perl module Constant::FromGlobal
 
+0.10 2021-03-27 NEILB
+    - Added leading _ to names of internal functions, to hide them from pod coverage.
+
 0.09 2016-08-08 NEILB
     - Added a link to Adam Kennedy's original blog post on use.perl.org,
       which inspired this module. Thanks to BOOK, who showed me that
