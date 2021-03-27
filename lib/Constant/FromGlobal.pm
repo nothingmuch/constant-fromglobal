@@ -214,6 +214,9 @@ very similar to the C<constant> pragma, but defines lexically-scoped constants.
 L<Const::Fast> -
 CPAN module for defining immutable variables (scalars, hashes, and arrays).
 
+L<Config::Constants> is a module that will load a configuration
+file into a number of function-style constants.
+
 L<Adam Kennedy's original post|http://use.perl.org/use.perl.org/_Alias/journal/39845.html>
 that inspired this module.
 
