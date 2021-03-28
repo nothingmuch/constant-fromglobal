@@ -9,6 +9,10 @@ BEGIN {
     $Bar::DEBUG = "tinny";
     $ENV{ZOT_DEBUG} = "peanuts";
     $Doof::NUMBER = " 448 ";
+    $ENV{ANSWER} = 42;
+    our $PIE = 'cherry';
+    our $VEGETABLE = 'carrot';
+    $ENV{VEGETABLE} = 'cabbage';
 }
 
 {
@@ -35,6 +39,13 @@ BEGIN {
     package Quxx;
 
     use Constant::FromGlobal DEBUG => { default => 1 };
+
+    package main;
+
+    use Constant::FromGlobal { env => 1 }, 'ANSWER';
+    use Constant::FromGlobal 'PIE';
+    use Constant::FromGlobal { env => 1 }, 'VEGETABLE';
+
 }
 
 ok( !Foo::foo(), "DEBUG not enabled" );
@@ -44,6 +55,9 @@ ok( Zot::DEBUG(),  "DEBUG enabled from env" );
 is( Zot::DEBUG(), 1, "converted to bool" );
 is( Doof::NUMBER(), 448, "converted to int" );
 is( Quxx::DEBUG(), 1, "default" );
+is( ANSWER, 42, "ANSWER taken from environment variable");
+ok( PIE eq 'cherry', "PIE takes value from \$main::PIE");
+ok( VEGETABLE eq 'carrot', "value taken from global not environment");
 
 done_testing;
 
